@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const hpp = require("hpp");
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss');
+const helmet = require("helmet");
 
 const cors = require("cors");
 const compression = require("compression");
@@ -22,6 +23,7 @@ app.post(
   webhookCheckout,
 );
 
+app.use(helmet());
 app.use(cors());
 app.use(compression());
 app.use(express.json({ limit: "20kb" }));
